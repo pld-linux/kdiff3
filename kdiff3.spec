@@ -9,7 +9,7 @@ Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 # Source0-md5:	075a9555bada43f06a483f973928a5f5
 URL:		http://kdiff3.sourceforge.net/
 BuildRequires:	kdelibs-devel >= 3.1.1a
-Requires:  	diffutils
+Requires:	diffutils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_htmldir	/usr/share/doc/kde/HTML
