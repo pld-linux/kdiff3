@@ -13,7 +13,8 @@ Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.gz
 # Source0-md5:	020aa64d36b0fd356b501cf2e0927117
 URL:		http://kdiff3.sourceforge.net/
-BuildRequires:	kdelibs-devel
+BuildRequires:	autoconf >= 2.54
+BuildRequires:	kdelibs-devel >= 3.1.1a
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 #%%define		_htmldir	/usr/share/doc/kde/HTML
