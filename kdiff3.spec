@@ -2,21 +2,22 @@ Summary:	kdiff3 - Graphical tool for merging two or three files or directories
 Summary(pl):	kdiff3 - Graficzne narzêdzie do ³±czenia zawarto¶ci wielu plików lub katalogów
 Name:		kdiff3
 Version:	0.9.86
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications
-Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/kdiff3/%{name}-%{version}.tar.gz
 # Source0-md5:	bf71264c2d430b74f7dadc89cdb4013e
 Patch0:		%{name}-am.patch
+Patch1:		%{name}-desktop.patch
 URL:		http://kdiff3.sourceforge.net/
-BuildRequires:	kdelibs-devel >= 9:3.2.0
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	kdelibs-devel >= 9:3.2.0
+BuildRequires:	rpmbuild(macros) >= 1.129
+BuildRequires:	sed >= 4.0
 BuildRequires:	unsermake >= 040511
 Requires:	diffutils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		_htmldir	/usr/share/doc/kde/HTML
 
 %description
 KDiff3 is program able to compares two or three text input files,
@@ -36,6 +37,8 @@ u¿ytkownika i mo¿e porównywaæ i ³±czyæ zawarto¶æ katalogów.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
+
 %{__sed} -i -e 's,\$(TOPSUBDIRS),doc po src,' Makefile.am
 
 %build
@@ -54,11 +57,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	kde_htmldir=%{_kdedocdir} \
-	kde_libs_htmldir=%{_kdedocdir}
-
-install -d $RPM_BUILD_ROOT%{_desktopdir}/kde
-mv $RPM_BUILD_ROOT%{_datadir}/applnk/*/%{name}*.desktop $RPM_BUILD_ROOT%{_desktopdir}/kde
-echo 'Categories=QtUtility' >> $RPM_BUILD_ROOT%{_desktopdir}/kde/%{name}.desktop
+	top_src_shelldesktopdir=%{_desktopdir}/kde
 
 %find_lang %{name} --with-kde
 
@@ -75,5 +74,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kdiff3part
 %{_datadir}/services/kdiff3part.desktop
 %{_desktopdir}/kde/*.desktop
-%{_iconsdir}/*/*/apps/%{name}.png
+%{_iconsdir}/hicolor/*/apps/%{name}.png
 %{_mandir}/man1/*
