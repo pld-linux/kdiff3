@@ -1,14 +1,13 @@
-# TODO:
-# - Select Group and place .desktop sensible
 
 Summary:	kdiff3 - Graphical tool for merging two or three files or directories
 Summary(pl):	kdiff3 - Graficzne narzêdzie do ³±czenie zawarto¶ci wielu plików lub katalogów
 Name:		kdiff3
-Version:	0.9.51
+Version:	0.9.60
 Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+# Source0-md5:	ab54ea2a6f547e4233293e81cd5afc0b
 URL:		http://kdiff3.sourceforge.net/
 BuildRequires:	kdelibs-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -57,5 +56,5 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/%{name}
 %dir %{_datadir}/apps/%{name}
 %{_datadir}/apps/%{name}/*.rc
-%{_applnkdir}/Applications/%{name}.desktop
+%{_applnkdir}/Utilities/%{name}.desktop
 %{_pixmapsdir}/*/*/apps/%{name}.png
