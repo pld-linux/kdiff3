@@ -25,7 +25,7 @@ comfortable solving of merge-conflicts and has an intuitive graphical
 user interface,and it can also compare and merge directories!
 
 %description -l pl
-KDiff3 jest programem zdolnym do porównywania zawarto¶ci dwuch lub
+KDiff3 jest programem zdolnym do porównywania zawarto¶ci dwóch lub
 trzech plików, wskazywania ró¿nic linia po linii i znak po znaku, daje
 automatyczne mo¿liwo¶ci ³±czenia zawarto¶ci plików oraz zintegrowany
 edytor do wygodnego rozwi±zywanie konfliktów powsta³ych podczas
