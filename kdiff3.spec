@@ -1,15 +1,14 @@
-
 Summary:	kdiff3 - Graphical tool for merging two or three files or directories
-Summary(pl):	kdiff3 - Graficzne narzêdzie do ³±czenie zawarto¶ci wielu plików lub katalogów
+Summary(pl):	kdiff3 - Graficzne narzêdzie do ³±czenia zawarto¶ci wielu plików lub katalogów
 Name:		kdiff3
 Version:	0.9.80
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 # Source0-md5:	335d4c86d0483b8b10071b769bb18a05
+Patch0:		%{name}-types.patch
 URL:		http://kdiff3.sourceforge.net/
-BuildRequires:	autoconf >= 2.54
 BuildRequires:	kdelibs-devel >= 3.1.1a
 Requires:  	diffutils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -33,17 +32,17 @@ u¿ytkownika i mo¿e porównywaæ i ³±czyæ zawarto¶æ katalogów.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 kde_htmldir="%{_htmldir}"; export kde_htmldir
-kde_icondir="%{_pixmapsdir}"; export kde_icondir
 kde_appsdir="%{_applnkdir}"; export kde_appsdir
-
 %configure
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
@@ -54,13 +53,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc doc
+%doc AUTHORS ChangeLog README TODO
 %attr(755,root,root) %{_bindir}/%{name}
-%dir %{_datadir}/apps/%{name}
-%{_datadir}/apps/*/*.rc
+%attr(755,root,root) %{_libdir}/kde3/*.so
+%{_libdir}/kde3/*.la
+%{_datadir}/apps/kdiff3
+%{_datadir}/apps/kdiff3part
 %{_datadir}/services/kdiff3part.desktop
 %{_applnkdir}/Development/%{name}.desktop
-%{_pixmapsdir}/*/*/apps/%{name}.png
-%{_libdir}/kde3/*
-#/usr/lib/kde3/libkdiff3part.la # Do we need .la ?
-#/usr/lib/kde3/libkdiff3part.so
+%{_iconsdir}/*/*/apps/%{name}.png
