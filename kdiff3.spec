@@ -11,7 +11,7 @@ Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 URL:		http://kdiff3.sourceforge.net/
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	kdelibs-devel >= 3.1.1a
-Requires:  	diff3
+Requires:  	diffutils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 #%%define		_htmldir	/usr/share/doc/kde/HTML
