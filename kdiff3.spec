@@ -1,14 +1,18 @@
 Summary:	kdiff3 - Graphical tool for merging two or three files or directories
 Summary(pl):	kdiff3 - Graficzne narzêdzie do ³±czenia zawarto¶ci wielu plików lub katalogów
 Name:		kdiff3
-Version:	0.9.83
-Release:	2
+Version:	0.9.86
+Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-# Source0-md5:	075a9555bada43f06a483f973928a5f5
+# Source0-md5:	bf71264c2d430b74f7dadc89cdb4013e
+Patch0:		%{name}-am.patch
 URL:		http://kdiff3.sourceforge.net/
-BuildRequires:	kdelibs-devel >= 3.1.1a
+BuildRequires:	kdelibs-devel >= 9:3.2.0
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  unsermake >= 040511
 Requires:	diffutils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -31,11 +35,17 @@ u¿ytkownika i mo¿e porównywaæ i ³±czyæ zawarto¶æ katalogów.
 
 %prep
 %setup -q
+%patch0 -p1
+%{__sed} -i -e 's,\$(TOPSUBDIRS),doc po src,' Makefile.am
 
 %build
 cp -f /usr/share/automake/config.sub admin
+export UNSERMAKE=/usr/share/unsermake/unsermake
+%{__make} -f Makefile.cvs
+
 %configure \
 	--with-qt-libraries=%{_libdir} 
+	
 %{__make}
 
 %install
@@ -43,11 +53,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
-	kde_htmldir=%{_kdedocdir}
+	kde_htmldir=%{_kdedocdir} \
+	kde_libs_htmldir=%{_kdedocdir}
 
 install -d $RPM_BUILD_ROOT%{_desktopdir}/kde
 mv $RPM_BUILD_ROOT/usr/share/applnk/*/%{name}*.desktop $RPM_BUILD_ROOT%{_desktopdir}/kde
-echo 'Categories=Utility' >> $RPM_BUILD_ROOT%{_desktopdir}/kde/%{name}.desktop
+echo 'Categories=QtUtility' >> $RPM_BUILD_ROOT%{_desktopdir}/kde/%{name}.desktop
 
 %find_lang %{name} --with-kde
 
