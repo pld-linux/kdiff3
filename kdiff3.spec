@@ -1,20 +1,17 @@
-# TODO:
-# - Select Group and place .desktop sensible
-# - Finish for AC.(findlang files)
 
-Summary:	kdiff3 - Graphical tool for merging two or three files or directories.
+Summary:	kdiff3 - Graphical tool for merging two or three files or directories
 Summary(pl):	kdiff3 - Graficzne narzêdzie do ³±czenie zawarto¶ci wielu plików lub katalogów
 Name:		kdiff3
-Version:	0.941
-Release:	0.1
+Version:	0.9.61
+Release:	2.1
 License:	GPL
 Group:		X11/Applications
-# http://cesnet.dl.sourceforge.net/sourceforge/kdiff3/kdiff3-0.941.tar.gz
-Source0:	http://dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.gz
-# Source0-md5:	020aa64d36b0fd356b501cf2e0927117
+Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+# Source0-md5:	b776900e16ce501257e5bce416489c9e
 URL:		http://kdiff3.sourceforge.net/
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	kdelibs-devel >= 3.1.1a
+Requires:  	diff3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 #%%define		_htmldir	/usr/share/doc/kde/HTML
@@ -35,14 +32,13 @@ edytor do wygodnego rozwi±zywanie konfliktów powsta³ych podczas
 ³±czenia zawarto¶ci. Posiada intuicyjny graficzny interfejs
 u¿ytkownika i mo¿e porównywaæ i ³±czyæ zawarto¶æ katalogów.
 
-
 %prep
 %setup -q
 
 %build
-# kde_htmldir="%{_htmldir}"; export kde_htmldir
-# kde_icondir="%{_pixmapsdir}"; export kde_icondir
-# kde_appsdir="%{_applnkdir}"; export kde_appsdir
+kde_htmldir="%{_htmldir}"; export kde_htmldir
+kde_icondir="%{_pixmapsdir}"; export kde_icondir
+kde_appsdir="%{_applnkdir}"; export kde_appsdir
 
 %configure
 %{__make}
@@ -52,11 +48,16 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-#%%find_lang %{name} --with-kde
+%find_lang %{name} --with-kde
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-#%%files -f %{name}.lang
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
+%doc doc
+%attr(755,root,root) %{_bindir}/%{name}
+%dir %{_datadir}/apps/%{name}
+%{_datadir}/apps/%{name}/*.rc
+%{_applnkdir}/Utilities/%{name}.desktop
+%{_pixmapsdir}/*/*/apps/%{name}.png
