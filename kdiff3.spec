@@ -2,7 +2,7 @@ Summary:	kdiff3 - Graphical tool for merging two or three files or directories
 Summary(pl):	kdiff3 - Graficzne narzêdzie do ³±czenia zawarto¶ci wielu plików lub katalogów
 Name:		kdiff3
 Version:	0.9.83
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
@@ -34,8 +34,6 @@ u¿ytkownika i mo¿e porównywaæ i ³±czyæ zawarto¶æ katalogów.
 
 %build
 cp -f /usr/share/automake/config.sub admin
-kde_htmldir="%{_htmldir}"; export kde_htmldir
-kde_appsdir="%{_applnkdir}"; export kde_appsdir
 %configure \
 	--with-qt-libraries=%{_libdir} 
 %{__make}
@@ -44,7 +42,12 @@ kde_appsdir="%{_applnkdir}"; export kde_appsdir
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+	DESTDIR=$RPM_BUILD_ROOT \
+	kde_htmldir=%{_kdedocdir}
+
+install -d $RPM_BUILD_ROOT%{_desktopdir}/kde
+mv $RPM_BUILD_ROOT/usr/share/applnk/*/%{name}*.desktop $RPM_BUILD_ROOT%{_desktopdir}/kde
+echo 'Categories=Utility' >> $RPM_BUILD_ROOT%{_desktopdir}/kde/%{name}.desktop
 
 %find_lang %{name} --with-kde
 
@@ -53,12 +56,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog README TODO
+%doc AUTHORS ChangeLog README TODO 
 %attr(755,root,root) %{_bindir}/%{name}
 %attr(755,root,root) %{_libdir}/kde3/*.so
 %{_libdir}/kde3/*.la
 %{_datadir}/apps/kdiff3
 %{_datadir}/apps/kdiff3part
 %{_datadir}/services/kdiff3part.desktop
-%{_applnkdir}/Development/%{name}.desktop
+%{_desktopdir}/kde/*.desktop
 %{_iconsdir}/*/*/apps/%{name}.png
+%{_mandir}/man1/*
