@@ -9,11 +9,11 @@ Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 # Source0-md5:	b776900e16ce501257e5bce416489c9e
 URL:		http://kdiff3.sourceforge.net/
-BuildRequires:	kdelibs-devel
+BuildRequires:	kdelibs-devel >= 3.1.1a
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_htmldir	/usr/share/doc/kde/HTML
 %define		_prefix		/usr/X11R6
+%define		_htmldir	/usr/share/doc/kde/HTML
 %define		_mandir		%{_prefix}/man
 
 %description
@@ -44,7 +44,9 @@ kde_appsdir="%{_applnkdir}"; export kde_appsdir
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__make} DESTDIR=$RPM_BUILD_ROOT install
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
+
 %find_lang %{name} --with-kde
 
 %clean
