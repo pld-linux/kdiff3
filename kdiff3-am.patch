@@ -1,11 +1,11 @@
---- kdiff3-0.9.86/doc/Makefile.am~	2004-06-14 08:08:29.000000000 +0200
-+++ kdiff3-0.9.86/doc/Makefile.am	2004-06-26 20:15:28.495526120 +0200
+--- kdiff3-0.9.88/doc/Makefile.am.orig	2005-02-24 23:32:57.000000000 +0100
++++ kdiff3-0.9.88/doc/Makefile.am	2005-02-25 15:24:21.242974624 +0100
 @@ -1,6 +1,6 @@
  # the SUBDIRS is filled automatically by am_edit. If files are 
  # in this directory they are installed into the english dir
  
--KDE_LANG = en da et it sv
-+SUBDIRS = en da et it sv
+-KDE_LANG = en da de et fr it pt sv
++SUBDIRS = en da de et fr it pt sv
  KDE_DOCS = kdiff3
 -SUBDIRS = $(AUTODIRS)  
 +#SUBDIRS = $(AUTODIRS)  
