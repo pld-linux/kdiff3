@@ -5,7 +5,7 @@
  [Desktop Entry]
  Encoding=UTF-8
  Name=KDiff3
-@@ -15,6 +14,7 @@
+@@ -15,11 +14,11 @@
  GenericName[hu]=Grafikus diff/patch
  GenericName[it]=Interfaccia per diff/patch
  GenericName[nl]=Een schil voor Diff/Patch
@@ -13,7 +13,12 @@
  GenericName[pt]=Interface do Diff/Patch
  GenericName[pt_BR]=Um front-end para Diff/Patch
  GenericName[ru]=Графический интерфейс к Diff и Patch
-@@ -41,6 +41,7 @@
+ GenericName[sr]=Интерфејс за Diff и Patch
+-GenericName[sr@Latn]=Интерфејс за Diff и Patch
+ GenericName[sv]=Jämförelse- och programfixgränssnitt
+ GenericName[ta]= ஒரு கேடியி முன்முனையில் இருந்து எஸ்எம்எஸ்அனுப்பு
+ GenericName[xx]=xxDiff/Patch Frontendxx
+@@ -41,12 +40,14 @@
  Comment[hu]=Segédprogram fájlok, könyvtárak összehasonlításához
  Comment[it]=Uno strumento di confronto e unione di file e directory
  Comment[nl]=Hulpmiddel voor het vergelijken en samenvoegen van bestanden en mappen
@@ -21,7 +26,8 @@
  Comment[pt]=Uma Ferramenta de Comparação e Junção de Ficheiros e Pastas
  Comment[pt_BR]=Uma Comparação de Arquivos e Pastas e uma Ferramenta para Mesclar Diferenças
  Comment[ru]=Утилита сравнения и объединения файлов и каталогов
-@@ -49,4 +50,6 @@
+ Comment[sr]=Алат за поређење и стапање фајлова и директоријума
+-Comment[sr@Latn]=Алат за поређење и стапање фајлова и директоријума
  Comment[sv]=Ett jämförelseverktyg för fil- och katalogjämförelser
  Comment[xx]=xxA File And Directory Comparison And Merge Toolxx
  Comment[zh_CN]=一个文件和目录的比较及合并工具
