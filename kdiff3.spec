@@ -10,9 +10,9 @@ Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Patch0:		%{name}-am.patch
 URL:		http://kdiff3.sourceforge.net/
 BuildRequires:	kdelibs-devel >= 9:3.2.0
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  unsermake >= 040511
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	unsermake >= 040511
 Requires:	diffutils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -39,13 +39,13 @@ u¿ytkownika i mo¿e porównywaæ i ³±czyæ zawarto¶æ katalogów.
 %{__sed} -i -e 's,\$(TOPSUBDIRS),doc po src,' Makefile.am
 
 %build
-cp -f /usr/share/automake/config.sub admin
-export UNSERMAKE=/usr/share/unsermake/unsermake
+cp -f %{_datadir}/automake/config.sub admin
+export UNSERMAKE=%{_datadir}/unsermake/unsermake
 %{__make} -f Makefile.cvs
 
 %configure \
-	--with-qt-libraries=%{_libdir} 
-	
+	--with-qt-libraries=%{_libdir}
+
 %{__make}
 
 %install
@@ -57,7 +57,7 @@ rm -rf $RPM_BUILD_ROOT
 	kde_libs_htmldir=%{_kdedocdir}
 
 install -d $RPM_BUILD_ROOT%{_desktopdir}/kde
-mv $RPM_BUILD_ROOT/usr/share/applnk/*/%{name}*.desktop $RPM_BUILD_ROOT%{_desktopdir}/kde
+mv $RPM_BUILD_ROOT%{_datadir}/applnk/*/%{name}*.desktop $RPM_BUILD_ROOT%{_desktopdir}/kde
 echo 'Categories=QtUtility' >> $RPM_BUILD_ROOT%{_desktopdir}/kde/%{name}.desktop
 
 %find_lang %{name} --with-kde
@@ -67,7 +67,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog README TODO 
+%doc AUTHORS ChangeLog README TODO
 %attr(755,root,root) %{_bindir}/%{name}
 %attr(755,root,root) %{_libdir}/kde3/*.so
 %{_libdir}/kde3/*.la
