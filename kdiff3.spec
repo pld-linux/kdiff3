@@ -9,6 +9,7 @@ Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 # Source0-md5:	b776900e16ce501257e5bce416489c9e
 URL:		http://kdiff3.sourceforge.net/
+BuildRequires:	autoconf >= 2.54
 BuildRequires:	kdelibs-devel >= 3.1.1a
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
