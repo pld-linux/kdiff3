@@ -11,6 +11,7 @@ License:	GPL
 Group:		X11/Applications
 # http://cesnet.dl.sourceforge.net/sourceforge/kdiff3/kdiff3-0.941.tar.gz
 Source0:	http://cesnet.dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.gz
+# Source0-md5:	020aa64d36b0fd356b501cf2e0927117
 URL:		http://kdiff3.sourceforge.net/
 BuildRequires:	kdelibs-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
