@@ -17,8 +17,6 @@ BuildRequires:	kdelibs-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 #%%define		_htmldir	/usr/share/doc/kde/HTML
-
-#%%define		_prefix		/usr/X11R6
 #%%define		_mandir		%{_prefix}/man
 
 %description
@@ -50,8 +48,8 @@ u¿ytkownika i mo¿e porównywaæ i ³±czyæ zawarto¶æ katalogów.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
-%{__make} DESTDIR=$RPM_BUILD_ROOT install
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 #%%find_lang %{name} --with-kde
 
