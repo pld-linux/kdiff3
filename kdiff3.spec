@@ -2,20 +2,19 @@
 Summary:	kdiff3 - Graphical tool for merging two or three files or directories
 Summary(pl):	kdiff3 - Graficzne narzêdzie do ³±czenie zawarto¶ci wielu plików lub katalogów
 Name:		kdiff3
-Version:	0.9.61
-Release:	3
+Version:	0.9.80
+Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-# Source0-md5:	b776900e16ce501257e5bce416489c9e
+# Source0-md5:	335d4c86d0483b8b10071b769bb18a05
 URL:		http://kdiff3.sourceforge.net/
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	kdelibs-devel >= 3.1.1a
 Requires:  	diffutils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-#%%define		_htmldir	/usr/share/doc/kde/HTML
-#%%define		_mandir		%{_prefix}/man
+%define		_htmldir	/usr/share/doc/kde/HTML
 
 %description
 KDiff3 is program able to compares two or three text input files,
@@ -58,6 +57,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc doc
 %attr(755,root,root) %{_bindir}/%{name}
 %dir %{_datadir}/apps/%{name}
-%{_datadir}/apps/%{name}/*.rc
-%{_applnkdir}/Utilities/%{name}.desktop
+%{_datadir}/apps/*/*.rc
+%{_datadir}/services/kdiff3part.desktop
+%{_applnkdir}/Development/%{name}.desktop
 %{_pixmapsdir}/*/*/apps/%{name}.png
+%{_libdir}/kde3/*
+#/usr/lib/kde3/libkdiff3part.la # Do we need .la ?
+#/usr/lib/kde3/libkdiff3part.so
