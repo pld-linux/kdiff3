@@ -1,0 +1,31 @@
+--- kdiff3-0.9.86/src/kdiff3.desktop.orig	Mon Jun 14 08:08:29 2004
++++ kdiff3-0.9.86/src/kdiff3.desktop	Tue Jul 20 11:18:36 2004
+@@ -1,4 +1,3 @@
+-
+ [Desktop Entry]
+ Encoding=UTF-8
+ Name=KDiff3
+@@ -15,6 +14,7 @@
+ GenericName[hu]=Grafikus diff/patch
+ GenericName[it]=Interfaccia per diff/patch
+ GenericName[nl]=Een schil voor Diff/Patch
++GenericName[pl]=Interfejs do diffa/patcha
+ GenericName[pt]=Interface do Diff/Patch
+ GenericName[pt_BR]=Um front-end para Diff/Patch
+ GenericName[ru]=Графический интерфейс к Diff и Patch
+@@ -41,6 +41,7 @@
+ Comment[hu]=Segédprogram fájlok, könyvtárak összehasonlításához
+ Comment[it]=Uno strumento di confronto e unione di file e directory
+ Comment[nl]=Hulpmiddel voor het vergelijken en samenvoegen van bestanden en mappen
++Comment[pl]=Narzędzie do porównywania i łączenia plików i katalogów
+ Comment[pt]=Uma Ferramenta de Comparação e Junção de Ficheiros e Pastas
+ Comment[pt_BR]=Uma Comparação de Arquivos e Pastas e uma Ferramenta para Mesclar Diferenças
+ Comment[ru]=Утилита сравнения и объединения файлов и каталогов
+@@ -49,4 +50,6 @@
+ Comment[sv]=Ett jämförelseverktyg för fil- och katalogjämförelser
+ Comment[xx]=xxA File And Directory Comparison And Merge Toolxx
+ Comment[zh_CN]=一个文件和目录的比较及合并工具
+-Terminal=0
++Terminal=false
++Categories=Qt;KDE;Utility;
++# vi: encoding=utf-8
