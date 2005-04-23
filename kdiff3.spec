@@ -43,8 +43,8 @@ u¿ytkownika i mo¿e porównywaæ i ³±czyæ zawarto¶æ katalogów.
 %{__sed} -i -e 's,\$(TOPSUBDIRS),doc po src,' Makefile.am
 
 %build
-cp -f %{_datadir}/automake/config.sub admin
-export UNSERMAKE=%{_datadir}/unsermake/unsermake
+cp -f /usr/share/automake/config.sub admin
+export UNSERMAKE=/usr/share/unsermake/unsermake
 %{__make} -f Makefile.cvs
 
 %configure \
