@@ -1,14 +1,13 @@
 Summary:	kdiff3 - Graphical tool for merging two or three files or directories
 Summary(pl):	kdiff3 - Graficzne narzêdzie do ³±czenia zawarto¶ci wielu plików lub katalogów
 Name:		kdiff3
-Version:	0.9.88
-Release:	2
+Version:	0.9.90
+Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/kdiff3/%{name}-%{version}.tar.gz
-# Source0-md5:	5aabc33f1c00b854f207782f4e218f95
-Patch0:		%{name}-am.patch
-Patch1:		%{name}-desktop.patch
+# Source0-md5:	7224d636e1f1fa577abfbc17192e71bd
+Patch0:		%{name}-desktop.patch
 URL:		http://kdiff3.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -37,7 +36,6 @@ u¿ytkownika i mo¿e porównywaæ i ³±czyæ zawarto¶æ katalogów.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %{__sed} -i -e 's,\$(TOPSUBDIRS),doc po src,' Makefile.am
 
