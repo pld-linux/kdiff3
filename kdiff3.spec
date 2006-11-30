@@ -2,12 +2,15 @@ Summary:	kdiff3 - Graphical tool for merging two or three files or directories
 Summary(pl):	kdiff3 - Graficzne narzêdzie do ³±czenia zawarto¶ci wielu plików lub katalogów
 Name:		kdiff3
 Version:	0.9.91
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/kdiff3/%{name}-%{version}.tar.gz
 # Source0-md5:	e56613506475f23b8ab713f325dea6e3
 Patch0:		%{name}-desktop.patch
+Patch1:		kde-ac260.patch
+Patch2:		kde-am.patch
+Patch3:		kde-ac260-lt.patch
 URL:		http://kdiff3.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -17,6 +20,8 @@ BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRequires:	sed >= 4.0
 Requires:	diffutils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define         _noautoreq      libtool(.*)
 
 %description
 KDiff3 is program able to compares two or three text input files,
@@ -36,6 +41,9 @@ u¿ytkownika i mo¿e porównywaæ i ³±czyæ zawarto¶æ katalogów.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %{__sed} -i -e 's,\$(TOPSUBDIRS),doc po src,' Makefile.am
 
