@@ -1,5 +1,5 @@
 Summary:	kdiff3 - Graphical tool for merging two or three files or directories
-Summary(pl):	kdiff3 - Graficzne narzêdzie do ³±czenia zawarto¶ci wielu plików lub katalogów
+Summary(pl.UTF-8):   kdiff3 - Graficzne narzÄ™dzie do Å‚Ä…czenia zawartoÅ›ci wielu plikÃ³w lub katalogÃ³w
 Name:		kdiff3
 Version:	0.9.91
 Release:	2
@@ -30,13 +30,13 @@ provides an automatic merge-facility and an integrated editor for
 comfortable solving of merge-conflicts and has an intuitive graphical
 user interface,and it can also compare and merge directories!
 
-%description -l pl
-KDiff3 jest programem zdolnym do porównywania zawarto¶ci dwóch lub
-trzech plików, wskazywania ró¿nic linia po linii i znak po znaku; daje
-mo¿liwo¶æ automatycznego ³±czenia zawarto¶ci plików oraz zintegrowany
-edytor do wygodnego rozwi±zywania konfliktów powsta³ych podczas
-³±czenia zawarto¶ci. Posiada intuicyjny graficzny interfejs
-u¿ytkownika i mo¿e porównywaæ i ³±czyæ zawarto¶æ katalogów.
+%description -l pl.UTF-8
+KDiff3 jest programem zdolnym do porÃ³wnywania zawartoÅ›ci dwÃ³ch lub
+trzech plikÃ³w, wskazywania rÃ³Å¼nic linia po linii i znak po znaku; daje
+moÅ¼liwoÅ›Ä‡ automatycznego Å‚Ä…czenia zawartoÅ›ci plikÃ³w oraz zintegrowany
+edytor do wygodnego rozwiÄ…zywania konfliktÃ³w powstaÅ‚ych podczas
+Å‚Ä…czenia zawartoÅ›ci. Posiada intuicyjny graficzny interfejs
+uÅ¼ytkownika i moÅ¼e porÃ³wnywaÄ‡ i Å‚Ä…czyÄ‡ zawartoÅ›Ä‡ katalogÃ³w.
 
 %prep
 %setup -q
