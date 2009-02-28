@@ -1,23 +1,16 @@
 Summary:	kdiff3 - Graphical tool for merging two or three files or directories
 Summary(pl.UTF-8):	kdiff3 - Graficzne narzędzie do łączenia zawartości wielu plików lub katalogów
 Name:		kdiff3
-Version:	0.9.92
-Release:	1
+Version:	0.9.94
+Release:	0.1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/kdiff3/%{name}-%{version}.tar.gz
-# Source0-md5:	c7b52bfee6a085393de0c4f83732e8f0
-Patch0:		%{name}-desktop.patch
-Patch1:		kde-ac260.patch
-Patch2:		kde-am.patch
-Patch3:		kde-ac260-lt.patch
+# Source0-md5:	8bf580e53a420b1aa1eca3ea502bbe8b
 URL:		http://kdiff3.sourceforge.net/
-BuildRequires:	autoconf
-BuildRequires:	automake
-BuildRequires:	gettext-devel
-BuildRequires:	kdelibs-devel >= 9:3.2.0
+BuildRequires:	cmake
+BuildRequires:	kde4-kdebase-devel
 BuildRequires:	rpmbuild(macros) >= 1.129
-BuildRequires:	sed >= 4.0
 Requires:	diffutils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -38,31 +31,29 @@ użytkownika i może porównywać i łączyć zawartość katalogów.
 
 %prep
 %setup -q
-%patch0 -p1
-#%patch1 -p1
-#%patch2 -p1
-%patch3 -p1
-
-%{__sed} -i -e 's,\$(TOPSUBDIRS),doc po src,' Makefile.am
 
 %build
-cp -f /usr/share/automake/config.sub admin
-%{__make} -f Makefile.cvs
-
-%configure \
-	--with-qt-libraries=%{_libdir}
+install -d build
+cd build
+%cmake \
+        -DCMAKE_INSTALL_PREFIX=%{_prefix} \
+        -DSYSCONF_INSTALL_DIR=%{_sysconfdir} \
+%if "%{_lib}" == "lib64"
+        -DLIB_SUFFIX=64 \
+%endif
+        ../
 
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT \
-	kde_htmldir=%{_kdedocdir} \
-	shelldesktopdir=%{_desktopdir}/kde
+%{__make} -C build install \
+        DESTDIR=$RPM_BUILD_ROOT \
+        kde_htmldir=%{_kdedocdir} \
+        kde_libs_htmldir=%{_kdedocdir}
 
-%find_lang %{name} --with-kde
+%find_lang %{name} --with-kde --all-name
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -71,8 +62,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README TODO
 %attr(755,root,root) %{_bindir}/%{name}
-%attr(755,root,root) %{_libdir}/kde3/*.so
-%{_libdir}/kde3/*.la
+%attr(755,root,root) %{_libdir}/kde4/*.so
 %{_datadir}/apps/kdiff3
 %{_datadir}/apps/kdiff3part
 %{_datadir}/services/kdiff3part.desktop
