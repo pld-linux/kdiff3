@@ -1,3 +1,6 @@
+
+%define		qtver	4.4.3
+
 Summary:	kdiff3 - Graphical tool for merging two or three files or directories
 Summary(pl.UTF-8):	kdiff3 - Graficzne narzędzie do łączenia zawartości wielu plików lub katalogów
 Name:		kdiff3
@@ -8,6 +11,11 @@ Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/kdiff3/%{name}-%{version}.tar.gz
 # Source0-md5:	8bf580e53a420b1aa1eca3ea502bbe8b
 URL:		http://kdiff3.sourceforge.net/
+BuildRequires:	Qt3Support-devel >= %{qtver}
+BuildRequires:	QtCore-devel >= %{qtver}
+BuildRequires:	QtGui-devel >= %{qtver}
+BuildRequires:	QtNetwork-devel >= %{qtver}
+BuildRequires:	QtTest-devel >= %{qtver}
 BuildRequires:	cmake
 BuildRequires:	kde4-kdebase-devel
 BuildRequires:	rpmbuild(macros) >= 1.129
@@ -39,7 +47,7 @@ cd build
         -DCMAKE_INSTALL_PREFIX=%{_prefix} \
         -DSYSCONF_INSTALL_DIR=%{_sysconfdir} \
 %if "%{_lib}" == "lib64"
-        -DLIB_SUFFIX=64 \
+	-DLIB_SUFFIX=64 \
 %endif
         ../
 
