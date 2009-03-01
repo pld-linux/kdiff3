@@ -61,6 +61,9 @@ rm -rf $RPM_BUILD_ROOT
         kde_htmldir=%{_kdedocdir} \
         kde_libs_htmldir=%{_kdedocdir}
 
+# remove locolor icons
+rm -rf $RPM_BUILD_ROOT%{_iconsdir}/locolor
+
 %find_lang %{name} --with-kde --all-name
 
 %clean
@@ -72,8 +75,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/%{name}
 %attr(755,root,root) %{_libdir}/kde4/*.so
 %{_datadir}/apps/kdiff3
-%{_datadir}/apps/kdiff3part
-%{_datadir}/services/kdiff3part.desktop
-%{_desktopdir}/kde/*.desktop
+%{_datadir}/kde4/services/kdiff3_plugin.desktop
+%{_datadir}/kde4/services/kdiff3part.desktop
+%{_desktopdir}/kde4/*.desktop
 %{_iconsdir}/hicolor/*/apps/%{name}.png
-%{_mandir}/man1/%{name}*
