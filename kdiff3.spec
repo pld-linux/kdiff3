@@ -17,8 +17,12 @@ BuildRequires:	QtGui-devel >= %{qtver}
 BuildRequires:	QtNetwork-devel >= %{qtver}
 BuildRequires:	QtSvg-devel >= %{qtver}
 BuildRequires:	QtTest-devel >= %{qtver}
+BuildRequires:	automoc4
 BuildRequires:	cmake
+BuildRequires:	gettext-devel
 BuildRequires:	kde4-kdebase-devel
+BuildRequires:	qt4-build
+BuildRequires:	qt4-qmake
 BuildRequires:	rpmbuild(macros) >= 1.129
 Requires:	diffutils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -45,12 +49,12 @@ użytkownika i może porównywać i łączyć zawartość katalogów.
 install -d build
 cd build
 %cmake \
-        -DCMAKE_INSTALL_PREFIX=%{_prefix} \
-        -DSYSCONF_INSTALL_DIR=%{_sysconfdir} \
+	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
+	-DSYSCONF_INSTALL_DIR=%{_sysconfdir} \
 %if "%{_lib}" == "lib64"
 	-DLIB_SUFFIX=64 \
 %endif
-        ../
+	../
 
 %{__make}
 
