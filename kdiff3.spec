@@ -5,11 +5,13 @@ Summary:	kdiff3 - Graphical tool for merging two or three files or directories
 Summary(pl.UTF-8):	kdiff3 - Graficzne narzędzie do łączenia zawartości wielu plików lub katalogów
 Name:		kdiff3
 Version:	0.9.95
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/kdiff3/%{name}-%{version}.tar.gz
 # Source0-md5:	652a98bf79ba762a8a646d4a0fddb323
+Patch0:		%{name}-part.rc.patch
+Patch1:		%{name}-docbook_fixes.patch
 URL:		http://kdiff3.sourceforge.net/
 BuildRequires:	Qt3Support-devel >= %{qtver}
 BuildRequires:	QtCore-devel >= %{qtver}
@@ -44,6 +46,8 @@ użytkownika i może porównywać i łączyć zawartość katalogów.
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
 
 %build
 install -d build
@@ -80,6 +84,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/%{name}
 %attr(755,root,root) %{_libdir}/kde4/*.so
 %{_datadir}/apps/kdiff3
+%{_datadir}/apps/kdiff3part
 %{_datadir}/kde4/services/kdiff3_plugin.desktop
 %{_datadir}/kde4/services/kdiff3part.desktop
 %{_desktopdir}/kde4/*.desktop
