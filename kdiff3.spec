@@ -4,14 +4,12 @@
 Summary:	kdiff3 - Graphical tool for merging two or three files or directories
 Summary(pl.UTF-8):	kdiff3 - Graficzne narzędzie do łączenia zawartości wielu plików lub katalogów
 Name:		kdiff3
-Version:	0.9.95
-Release:	2
+Version:	0.9.96
+Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/kdiff3/%{name}-%{version}.tar.gz
-# Source0-md5:	652a98bf79ba762a8a646d4a0fddb323
-Patch0:		%{name}-part.rc.patch
-Patch1:		%{name}-docbook_fixes.patch
+# Source0-md5:	46b96befddf3448a3cb673f018c6f6f9
 URL:		http://kdiff3.sourceforge.net/
 BuildRequires:	Qt3Support-devel >= %{qtver}
 BuildRequires:	QtCore-devel >= %{qtver}
@@ -46,8 +44,6 @@ użytkownika i może porównywać i łączyć zawartość katalogów.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 
 %build
 install -d build
@@ -66,12 +62,12 @@ cd build
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} -C build install \
-        DESTDIR=$RPM_BUILD_ROOT \
-        kde_htmldir=%{_kdedocdir} \
-        kde_libs_htmldir=%{_kdedocdir}
+	DESTDIR=$RPM_BUILD_ROOT \
+	kde_htmldir=%{_kdedocdir} \
+	kde_libs_htmldir=%{_kdedocdir}
 
 # remove locolor icons
-rm -rf $RPM_BUILD_ROOT%{_iconsdir}/locolor
+%{__rm} -r $RPM_BUILD_ROOT%{_iconsdir}/locolor
 
 %find_lang %{name} --with-kde --all-name
 
