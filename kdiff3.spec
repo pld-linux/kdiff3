@@ -81,7 +81,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/*.so
 %{_datadir}/apps/kdiff3
 %{_datadir}/apps/kdiff3part
-%{_datadir}/kde4/services/kdiff3_plugin.desktop
-%{_datadir}/kde4/services/kdiff3part.desktop
+%{_datadir}/kde4/services/%{name}*.desktop
 %{_desktopdir}/kde4/*.desktop
 %{_iconsdir}/hicolor/*/apps/%{name}.png
