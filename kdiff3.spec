@@ -8,7 +8,7 @@ Version:	0.9.96
 Release:	1
 License:	GPL
 Group:		X11/Applications
-Source0:	http://dl.sourceforge.net/kdiff3/%{name}-%{version}.tar.gz
+Source0:	http://downloads.sourceforge.net/kdiff3/%{name}-%{version}.tar.gz
 # Source0-md5:	46b96befddf3448a3cb673f018c6f6f9
 URL:		http://kdiff3.sourceforge.net/
 BuildRequires:	Qt3Support-devel >= %{qtver}
